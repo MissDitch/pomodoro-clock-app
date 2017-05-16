@@ -1,0 +1,143 @@
+html {
+  box-sizing: border-box;
+  font-size: 35px;
+  background: #ec407a; /* Pink 400 */
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin:0;
+  text-align: center;
+  font-family: 'Inconsolata', monospace;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  font-size: 0.7em;
+}
+.controls > * {
+  flex:1;
+  display: flex;
+  flex-direction:column;
+  padding: 20px;
+ // justify-content: center;
+  align-items: center;
+}
+.controls > * > * {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.controls__button {
+  cursor: pointer;
+  color:white;
+  font-size: 1.2em;
+  border-radius: 50%;
+/*  background:rgba(0,0,0,0.1);
+  border-bottom:3px solid rgba(0,0,0,0.2);
+  border-right:1px solid rgba(0,0,0,0.2);  */
+  padding:1rem;
+  font-family: 'Inconsolata', monospace;
+}
+/*
+.controls__button:hover {
+  background:rgba(0,0,0,0.2);
+  outline:0;
+} */
+
+.controls .display {
+   border-radius: 50%;
+   background: #FF77A9;  /* Pink 400 light */
+   box-shadow:  0 4px 18px 0px rgba(0,0,0,0.3);
+   width: 100px;
+   height: 100px;
+   display: flex;
+   justify-content: center;
+  align-items: center;
+}
+.circle {
+  height: 70%;
+}
+
+.circle__outer {
+  background: #FF77A9; /* Pink 400  light */   
+      margin: 0 auto; 
+  width: 13em;
+  height: 13em;
+  transform: scale(1.0);
+    transform-origin: center;
+ 
+  border-radius: 50%;
+  //box-shadow: inset 0 0 8px 5px rgba(0,0,0,0.3);
+      z-index: -10;
+}
+
+.circle__inner {
+  flex:1;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  background: #F44336;  /* Red 500  */
+  width:inherit;
+  height: inherit;
+ // min-width: 800px;
+//  min-height: 800px;
+  border-radius: 50%;
+      box-shadow: 0 21px 47px 1px rgba(0,0,0,0.3);
+  //box-shadow:  0 0 6px 4px rgba(0,0,0,0.3);
+  transform: scale(0.7);  
+}
+.time {
+  display: inline-block;
+  height: 80%;
+  background: #ffffff;
+}
+.display__time-left {
+  font-weight: 100;
+  //font-size: 20rem;
+  margin: 0;
+  color:white;
+  text-shadow:4px 4px 0 rgba(0,0,0,0.05);
+}
+
+.display__end-time {
+  font-size: 4rem;
+  color:white;
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 20em) {  /* 320 / 16 = 20em */
+  
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 30em) {  /* 480 / 16 = 30em */  
+  
+  
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 48em) {  /* 768 / 16 =  48em */
+  .clock {
+    margin: 0 auto;
+  max-width: 800px;
+  //height: 600px;
+  }
+  
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 62em) {  /* 992 / 16 = 62em */
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 75em) { /* 1200 / 16 = 75em */
+}
+
