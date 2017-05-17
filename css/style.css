@@ -61,14 +61,14 @@ body {
 }
 .controls__display {
   border-radius: 50%;
-  font-size: 6rem; 
+  font-size: 7rem; 
   font-weight: 700; 
   display: flex;
   align-items: center;
 }
 .controls h3 {
   margin: 0.3rem 0;  
-  font-size: 4rem;
+  font-size: 3.5rem;
 }
 .circle {
   height: 65%;
@@ -113,7 +113,7 @@ body {
   text-shadow:4px 4px 0 rgba(0,0,0,0.05);
 }
 .circle__message {
-  font-size: 4rem;
+  font-size: 5rem;
   color:white;
   padding: 2rem 0 0 0;
 }
