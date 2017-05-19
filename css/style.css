@@ -102,8 +102,8 @@ body {
 }
 .circle__inner .controls__button {
   border: 0rem;
-  width: 17rem;
-  height: 17rem;
+  width: 21rem;
+  height: 21rem;
 }
 .time {
   display: inline-block;
@@ -125,6 +125,7 @@ body {
 }
 i.fa.fa-play {
   font-size: 8rem;
+  padding: 15rem;
 }
 i.fa.fa-undo {
   font-size: 5rem;
