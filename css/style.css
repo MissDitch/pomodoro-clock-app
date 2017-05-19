@@ -109,7 +109,8 @@ body {
   display: inline-block;
   height: 80%;
   background: #ba000d;   /* Red 500 dark  */
-  background: #FF77A9; /* Pink 400  light */ 
+  background: #FF77A9; /* session: Pink 400  light */ 
+ /* background: #62EFFF;  /* break: cyan 500 light  */
 }
 .circle__time-left {
   font-weight: 100;

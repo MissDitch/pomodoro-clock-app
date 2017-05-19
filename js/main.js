@@ -45,6 +45,8 @@ function subtract(e) {
 }
 
 function updateClock(val) {    
+    if (val.toString().length === 1) { val = "0" + val; }
+    //else val = val;
     var time= document.getElementById("time");
     time.textContent = val + ":00";    
 }
@@ -65,11 +67,11 @@ function reset() {
 function toggleStart(e) {
     var control = document.getElementById("play_pause");
     if (!isRunning) {        
-        control.setAttribute("class", "fa fa-pause"); // show pause icon
+        control.setAttribute("class", "fa fa-pause"); 
         // changing session or break length is not possible        
         // start or resume timer
         if (state === 0) {
-            pomodoro = new Pomodoro(); //callback, 1000
+            pomodoro = new Pomodoro(); 
             state = 1;
             pomodoro.start();
         }  
@@ -79,7 +81,7 @@ function toggleStart(e) {
         }                
         isRunning = true;        
     } else {              
-        control.setAttribute("class", "fa fa-play"); // show play icon 
+        control.setAttribute("class", "fa fa-play"); 
         // changing session or break length is possible?
         if (state === 1 || state === 3) {
             pomodoro.pause();
@@ -88,12 +90,12 @@ function toggleStart(e) {
     }
 }
 
-function Pomodoro() {  //callback, interval
+function Pomodoro() { 
     var minute, second, intervalId, startTime, remaining = 0;
     var timeString, time = document.getElementById("time");
 
     this.start = function() {
-        play(isSession, 0, minute, second);
+        run(isSession, 0, minute, second);
     };
     this.pause = function () {        
         timeString = time.textContent;
@@ -104,11 +106,11 @@ function Pomodoro() {  //callback, interval
     };
     this.resume = function () {
         second--;
-        play(isSession, 2, minute, second);
+        run(isSession, 2, minute, second);
     };    
 }
 
-function play(isSession, state, minute, second) {
+function run(isSession, state, minute, second) {
     var display, message, time, minute, second;
     if (arguments.length > 2) {
         minute = minute;
@@ -121,23 +123,32 @@ function play(isSession, state, minute, second) {
         state = 1;
         if (isSession) {  
             display = document.getElementById("workTime");  
-            message.textContent = "All Work and no play";      
+            message.textContent = "All Work and no play";
+            document.getElementsByTagName("html")[0].style.background = "#ec407a";  //Pink 400
+            document.getElementById("circle-inner").style.background = "#F44336"; //  Red 500
+            document.getElementById("circle-outer").style.background = "#fce4ec";  // Pink 50     
         } else {
             display = document.getElementById("breakTime");
-            message.textContent = "Gimme a break!";
+            message.textContent = "Gimme a break!"; 
+            document.getElementsByTagName("html")[0].style.background = "#00BCD4";  //cyan 500  
+            document.getElementsByTagName("html")[0].style.background = "#009688"; //teal 500
+            // document.getElementById("circle").style.background = "#4CAF50"; //green 500 
+            document.getElementById("circle-inner").style.background = "#00BCD4";  //cyan 500
+            document.getElementById("circle-outer").style.background = "#e0f7fa";  //cyan 50 
+            //circle__outer #e0f7fa   //cyan 50    
         }
         minute = display.textContent;
         minute--;
         second = "59";  
-        run(isSession, minute, second);      
+        countDown(isSession, minute, second);      
     } 
     if (state === 2) {
         state = 3; 
-        run(isSession, minute, second);
+        countDown(isSession, minute, second);
     }      
 }
 
-function run (isSession, minute, second) {
+function countDown (isSession, minute, second) {
     clearInterval(intervalId);   
     var time = document.getElementById("time");  
     intervalId = setInterval(function() {
@@ -145,14 +156,18 @@ function run (isSession, minute, second) {
         second < 10 && second >= 0 ? second = "0"+ second : second = second;
         minute < 10 && minute.toString().length === 1 ? minute = "0"+ minute : minute = minute;           
         time.textContent = minute + ":" + second;
+        document.title = time.textContent;
         if (minute === '00' && second === '00') { 
+           
             if (isSession) {
+                makeSound(261.1);
                 isSession = false; 
-                play(isSession, 0);                  
+                run(isSession, 0);                  
             } 
-            else {
+            else { 
+                makeSound(523.3);               
                 isSession = true;
-                play(isSession, 0);
+                run(isSession, 0);
             }
         }
         if (second === '00') {
@@ -167,6 +182,24 @@ function pause() {
    clearInterval(intervalId);
 }
 
+function makeSound(frequency) {   
+    //var audioCtx = new AudioContext();
+    var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    var oscillator = audioCtx.createOscillator();
+    var gainNode = audioCtx.createGain();
+    //var frequency = 261.6;
+    oscillator.type = "triangle";
+    oscillator.frequency.value = frequency;
+    oscillator.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+   
+    oscillator.start();
+    var x = setTimeout(function() {
+        gainNode.gain.exponentialRampToValueAtTime (0.00001, audioCtx.currentTime + 5);
+    }, 2000);      
+ 
 
+}
+ 
 
 init();
