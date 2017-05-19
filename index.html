@@ -17,20 +17,20 @@
     <div class="controls">
       <div class="controls__work">        
         <div class="buttonContainer">
-          <div class="controls__button plus"><span>+</span></div>
+          <div class="controls__button plus">+</div>
           <div id="workTime"  class="controls__display">
             <span class="">25</span></div>
-          <div class="controls__button minus"><span>-</span></div>
+          <div class="controls__button minus">-</div>
         </div>
         <h3>Session Length</h3>        
       </div>
 
       <div class="controls__break">        
         <div class="buttonContainer"> 
-          <div class="controls__button plus"><span>+</span></div>
+          <div class="controls__button plus">+</div>
           <div  id="breakTime" class="controls__display">
             <span class="">5</span></div>
-          <div class="controls__button minus"><span>-</span></div>
+          <div class="controls__button minus">-</div>
         </div>        
         <h3>Break Length</h3>
       </div>
@@ -39,15 +39,15 @@
     <div class="circle">
       <div class="circle__outer" >    
         <div class="circle__inner">
-          <h1 id="time" class="circle__time-left">25:00</h1>
+          <h1 id="time" class="circle__time-left"></h1>
                     
-          <div class="controls__button "><i class="fa fa-play" aria-hidden="true"></i></div>  
+          <div class="controls__button "><i id="play_pause" class="fa fa-play" aria-hidden="true"></i></div>  
           <!--  <div class="controls__button "><span><i class="fa fa-pause"aria-hidden="true"></i></span></div> -->        
         </div>  <!-- End circle_inner-->
         <span class="time"></span>
       </div>    <!-- End circle_outer-->
 
-      <p class="circle__message">All work and no play</p>
+      <p id = "message" class="circle__message"></p>
     </div>   <!-- End circle-->
 
     

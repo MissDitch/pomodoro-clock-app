@@ -39,7 +39,7 @@ body {
   align-items: center;
   cursor: pointer;
   color:white;
-  border: 0.8rem solid rgba(255,255,255,0.4); /* #FF77A9;  */
+  border: 0.8rem solid rgba(255,255,255,0.5); /*  */
   width: 11rem;
   height: 11rem;
   font-size: 6rem;
@@ -48,9 +48,13 @@ body {
   padding: 1rem;
   margin: 1rem;
   font-family: 'Inconsolata', monospace;
+  text-align: center;
+  vertical-align: middle;
 }
-.controls__button:hover {
-  background:rgba(0,0,0,0.2);
+.controls__button:active {
+  transform: scale(1.1);
+  transform-origin: center;
+  box-shadow: 0 21px 47px 1px rgba(0,0,0,0.3);
   outline:0;
 } 
 .controls--work {
@@ -76,7 +80,8 @@ body {
 }
 .circle__outer {
   background: #ff94c2; /* Pink 300  light */
-  background: #FF77A9; /* Pink 400  light */  
+  background: #FF77A9; /* Pink 400  light */ 
+  background: #fce4ec;  /* Pink 50 */ 
   margin: 0 auto; 
   width: 60rem;
   height: 60rem;
@@ -104,6 +109,7 @@ body {
   display: inline-block;
   height: 80%;
   background: #ba000d;   /* Red 500 dark  */
+  background: #FF77A9; /* Pink 400  light */ 
 }
 .circle__time-left {
   font-weight: 100;
