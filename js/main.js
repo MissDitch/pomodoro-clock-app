@@ -1,6 +1,6 @@
 function init() {
-    addListener("class", ".plus", add);
-    addListener("class", ".minus", subtract);
+    addListener("class", ".plus", customizeLength);
+    addListener("class", ".minus", customizeLength);
     addListener("class", ".reset", reset);
     addListener("id", "play_pause", toggleStart);
     updateClock("25");
@@ -23,37 +23,35 @@ function addListener(prop, selector, func) {
         el.addEventListener("click", func);
     }    
 }
-
-function add(e) {
-    var el = e.target;   
-    var int = el.nextElementSibling.textContent;
-    if (int < 60) {
-        int++;
-        el.nextElementSibling.textContent = int;
-        updateClock(int);
-    }        
-}
-
-function subtract(e) {
-    var el = e.target;   
-    var int = el.previousElementSibling.textContent;
-    if (int > 1) {
-        int--;
-    el.previousElementSibling.textContent = int;
-    updateClock(int);
+function customizeLength(e) {
+    if (!isRunning && state === 0) {
+    var el = e.target, int;  
+    if (el.textContent === "+" ) {
+        int = el.nextElementSibling.textContent;
+        if (int < 60) {
+            int++;
+            el.nextElementSibling.textContent = int;
+        }
+    }  
+    if (el.textContent === "-") {
+        int = el.previousElementSibling.textContent;
+        if (int > 1) {
+            int--;
+            el.previousElementSibling.textContent = int;
+        }         
     } 
+    if (el.parentNode.parentNode.getAttribute("class") === 'controls__work' ) {updateClock(int)}
+    }
 }
 
 function updateClock(val) {    
     if (val.toString().length === 1) { val = "0" + val; }
-    //else val = val;
     var time= document.getElementById("time");
     time.textContent = val + ":00";    
 }
 
 function reset() {
     var elm = document.getElementById("workTime");
-    var message = document.getElementById("message");
     elm.textContent = '25';
     elm = document.getElementById("breakTime");
     elm.textContent = '5';
@@ -61,15 +59,16 @@ function reset() {
     elm.textContent = "25:00";
     clearInterval(intervalId);
     state = 0;
+    isRunning = false;
+    isSession = true;
+    elm = document.getElementById("message");
     message.textContent = "";
 }
 
 function toggleStart(e) {
     var control = document.getElementById("play_pause");
     if (!isRunning) {        
-        control.setAttribute("class", "fa fa-pause"); 
-        // changing session or break length is not possible        
-        // start or resume timer
+        control.setAttribute("class", "fa fa-pause");            
         if (state === 0) {
             pomodoro = new Pomodoro(); 
             state = 1;
@@ -82,7 +81,6 @@ function toggleStart(e) {
         isRunning = true;        
     } else {              
         control.setAttribute("class", "fa fa-play"); 
-        // changing session or break length is possible?
         if (state === 1 || state === 3) {
             pomodoro.pause();
         }  
@@ -132,10 +130,8 @@ function run(isSession, state, minute, second) {
             message.textContent = "Gimme a break!"; 
             document.getElementsByTagName("html")[0].style.background = "#00BCD4";  //cyan 500  
             document.getElementsByTagName("html")[0].style.background = "#009688"; //teal 500
-            // document.getElementById("circle").style.background = "#4CAF50"; //green 500 
             document.getElementById("circle-inner").style.background = "#00BCD4";  //cyan 500
             document.getElementById("circle-outer").style.background = "#e0f7fa";  //cyan 50 
-            //circle__outer #e0f7fa   //cyan 50    
         }
         minute = display.textContent;
         minute--;
@@ -183,11 +179,9 @@ function pause() {
 }
 
 function makeSound(frequency) {   
-    //var audioCtx = new AudioContext();
     var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     var oscillator = audioCtx.createOscillator();
     var gainNode = audioCtx.createGain();
-    //var frequency = 261.6;
     oscillator.type = "triangle";
     oscillator.frequency.value = frequency;
     oscillator.connect(gainNode);
@@ -196,10 +190,7 @@ function makeSound(frequency) {
     oscillator.start();
     var x = setTimeout(function() {
         gainNode.gain.exponentialRampToValueAtTime (0.00001, audioCtx.currentTime + 5);
-    }, 2000);      
- 
-
+    }, 2000);  
 }
  
-
 init();
