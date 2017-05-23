@@ -12,6 +12,9 @@ body {
   text-align: center;
   font-family: 'Inconsolata', monospace;
 }
+h3 {
+  margin: 0.3rem 0; 
+}
 .clock {
   display: flex;
   flex-direction: column;
@@ -71,7 +74,6 @@ body {
   align-items: center;
 }
 .controls h3 {
-  margin: 0.3rem 0;  
   font-size: 3.5rem;
 }
 .circle {
@@ -142,9 +144,20 @@ body {
   width:inherit;
   height: inherit; 
   border-radius: 50%;
-  box-shadow: 0 21px 47px 1px rgba(0,0,0,0.3);
-  transform: scale(0.7);  
+  box-shadow:  0 21px 47px 1px rgba(86,0,39,0.5), 0 21px 47px 1px rgba(0,0,0,0.3);  /*#560027  Pink 900 Dark */
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); /*.card-4 */
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); /*.card-2 */
+  box-shadow: 0 28px 42px rgba(86,0,39,0.4), 0 10px 10px rgba(0,0,0,0.2); /*.card-4 */
+  box-shadow: 0 28px 70px rgba(86,0,39,0.4), 0 14px 70px rgba(0,0,0,0.1);
+  /*#00251a rgba(0,37,26,0.4) 900 Teal Dark */
+  transform-origin: 50% 48%;
+  transform: scale(0.75);  
   z-index: 500;
+}
+
+.circle__inner h3 {
+  font-size: 5.5rem;
+  color: #ffffff;
 }
 .circle__inner .controls__button {
   border: 0rem;

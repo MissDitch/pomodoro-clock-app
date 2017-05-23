@@ -71,12 +71,17 @@ function reset() {
     elm.textContent = '5';
     elm = document.getElementById("time");
     elm.textContent = "25:00";
+    elm = document.getElementById("message");
+    elm.textContent = "";
+    elm = document.getElementById("play_pause");
+    elm.setAttribute("class", "fa fa-play"); 
+
     clearInterval(intervalId);
     state = 0;
     isRunning = false;
     isSession = true;
-    elm = document.getElementById("message");
-    message.textContent = "";
+    setFinishLines();
+    setNextPomodoro();
 }
 
 function toggleStart(e) {
@@ -123,28 +128,33 @@ function Pomodoro() {
 }
 
 function run(isSession, state, minute, second) {
-    var display, message, time, finSession, finBreak, sessionDeg, breakDeg;
+    var display, message, time, htm, inner, outer, finSession, finBreak, sessionDeg, breakDeg;
     if (arguments.length > 2) { // resume countdown
         minute = minute;
         second = second;
     }  
     message = document.getElementById("message");
     time = document.getElementById("time");
+    htm =  document.getElementsByTagName("html");
+    inner = document.getElementById("circle-inner");
+    outer = document.getElementById("circle-outer")
   
     if (state === 0) {    
         state = 1;
         if (isSession) {  
             display = document.getElementById("workTime");  
             message.textContent = "In session";
-            document.getElementsByTagName("html")[0].style.background = "#ec407a";  //Pink 400
-            document.getElementById("circle-inner").style.background = "#F44336"; //  Red 500
-            document.getElementById("circle-outer").style.background = "#fce4ec";  // Pink 50     
+            htm[0].style.background = "#ec407a";  //Pink 400
+            inner.style.background = "#F44336"; //  Red 500
+            inner.style.boxShadow = "0 28px 70px rgba(86,0,39,0.4), 0 14px 70px rgba(0,0,0,0.1)";
+            outer.style.background = "#fce4ec";  // Pink 50     
         } else {
             display = document.getElementById("breakTime");
             message.textContent = "Have a break!"; 
-            document.getElementsByTagName("html")[0].style.background = "#009688"; //teal 500
-            document.getElementById("circle-inner").style.background = "#00BCD4";  //cyan 500
-            document.getElementById("circle-outer").style.background = "#e0f7fa";  //cyan 50 
+            htm[0].style.background = "#009688"; //teal 500
+            inner.style.background = "#00BCD4";  //cyan 500
+            inner.style.boxShadow = "0 28px 70px rgba(0,37,26,0.4), 0 14px 70px rgba(0,0,0,0.1)";  
+            outer.style.background = "#e0f7fa";  //cyan 50 
         }
 
         minute = display.textContent;
