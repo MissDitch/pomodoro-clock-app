@@ -109,11 +109,11 @@ function Pomodoro() {
 }
 
 function run(isSession, state, minute, second) {
-    var display, message, time, minute, second;
-    if (arguments.length > 2) {
+    var display, message, time;
+    if (arguments.length > 2) { // resume countdown
         minute = minute;
         second = second;
-    }
+    }  
     message = document.getElementById("message");
     time = document.getElementById("time");
   
@@ -136,11 +136,14 @@ function run(isSession, state, minute, second) {
         minute = display.textContent;
         minute--;
         second = "59";  
-        countDown(isSession, minute, second);      
+        countDown(isSession, minute, second);  
+        
+            
     } 
     if (state === 2) {
         state = 3; 
         countDown(isSession, minute, second);
+        
     }      
 }
 
@@ -153,6 +156,9 @@ function countDown (isSession, minute, second) {
         minute < 10 && minute.toString().length === 1 ? minute = "0"+ minute : minute = minute;           
         time.textContent = minute + ":" + second;
         document.title = time.textContent;
+        fillCircle(isSession, minute, second);
+        
+        
         if (minute === '00' && second === '00') { 
            
             if (isSession) {
@@ -167,6 +173,7 @@ function countDown (isSession, minute, second) {
             }
         }
         if (second === '00') {
+        
             minute--;                
             second = parseInt(second) + 60;
         }
@@ -176,6 +183,27 @@ function countDown (isSession, minute, second) {
 
 function pause() {
    clearInterval(intervalId);
+}
+
+function fillCircle(isSession, minute, second) {
+    var display, length, left, mask, numSec;
+    numSec = parseInt(minute) * 60 + parseInt(second);
+    if (isSession) {
+        display = document.getElementById("workTime");
+        // get length from session length
+    } else { // get length from break length 
+         display = document.getElementById("breakTime");
+    }
+    length = display.textContent;
+    console.log(length);  
+    
+    left = document.getElementById("left-half");
+    mask = document.getElementById("mask");
+    if (length > 30) {
+        left.style.opacity = 1;        
+    }
+    else left.style.opacity = 0;
+    mask.style.transform = "rotate(" + ( (length * 6) - (numSec * 0.1) ) + "deg)";
 }
 
 function makeSound(frequency) {   
@@ -193,4 +221,5 @@ function makeSound(frequency) {
     }, 2000);  
 }
  
+
 init();
