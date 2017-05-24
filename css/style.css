@@ -1,8 +1,7 @@
 html {
   box-sizing: border-box;
-  font-size: 62.5%;
-  background: #f06292; /* Pink 300 */ 
-  background: #ec407a; /* Pink 400 */ 
+  font-size: 67.5%;
+  background: #d81b60; /* Pink 600 */
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -11,6 +10,10 @@ body {
   margin:0;
   text-align: center;
   font-family: 'Inconsolata', monospace;
+}
+h1 {
+  font-size: 9rem;
+  color: rgba(255,255,255,0.5); 
 }
 h3 {
   margin: 0.3rem 0; 
@@ -60,25 +63,23 @@ h3 {
   box-shadow: 0 21px 47px 1px rgba(0,0,0,0.3);
   outline:0;
 } 
-.controls--work {
-  color: #ba000d;
-}
-.controls--play { 
-  color:  #008BA3;
-}
 .controls__display {
   border-radius: 50%;
   font-size: 7rem; 
   font-weight: 700; 
+  color: #560027; /* pink 900 dark */
   display: flex;
   align-items: center;
+
 }
 .controls h3 {
   font-size: 3.5rem;
+  /*color: rgba(255,255,255,0.5); */
+  color: #560027; /* pink 900 dark */
 }
 .circle {
   height: 65%;
-  padding: 4rem 0 6rem 0;
+  padding: 4rem 0 4rem 0;
 }
 .circle__outer {
   position: relative;
@@ -89,20 +90,21 @@ h3 {
   height: 60rem;
   border-radius: 50%;
 }
+/* inspired by https://css-tricks.com/css-pie-timer/ */
 .whole {
   width: 50%;
   height: 100%;
   position: absolute;
   background: #FF77A9; /* session: Pink 400  light  */
 }
-.leftHalf { /*spinner*/
+.leftHalf { 
   border-radius: 50% 0 0 50%;
   z-index: 200;  
   border-right: none;
   transform-origin: 100% 50%;
   transform: rotate(0deg);
 }
-.rightHalf { /*filler*/
+.rightHalf {
   border-radius: 0 50% 50% 0;
   z-index: 100;
   border-left: none;  
@@ -119,19 +121,21 @@ h3 {
   transform-origin: 100% 50%; 
   transform: rotate(0deg);
 }
+
 .finishLine {
   width: 52%;
-  height: 0.5rem;
+  height: 0.96rem;
+  height: 0.6rem;
   top: 50%;
   left: -2%;
   position: absolute;
   z-index: 450;
-  background: #ec407a; /* Pink 400 */; 
+  background: #FF77A9; /* session: Pink 400  light  */
   transform-origin: 100%;
   transform: rotate(90deg);
 }
 .finishLine#finish-break {
-   background: #009688;  /* breal: teal 500  */
+  background: #64d8cb;  /* teal 400 light  */ 
 }
 .circle__inner {
   position: absolute;
@@ -144,17 +148,12 @@ h3 {
   width:inherit;
   height: inherit; 
   border-radius: 50%;
-  box-shadow:  0 21px 47px 1px rgba(86,0,39,0.5), 0 21px 47px 1px rgba(0,0,0,0.3);  /*#560027  Pink 900 Dark */
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); /*.card-4 */
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); /*.card-2 */
-  box-shadow: 0 28px 42px rgba(86,0,39,0.4), 0 10px 10px rgba(0,0,0,0.2); /*.card-4 */
-  box-shadow: 0 28px 70px rgba(86,0,39,0.4), 0 14px 70px rgba(0,0,0,0.1);
-  /*#00251a rgba(0,37,26,0.4) 900 Teal Dark */
+  box-shadow: 0 28px 70px rgba(86,0,39,0.4), 0 14px 70px rgba(0,0,0,0.1); /*#560027  Pink 900 Dark , black */
+  /* shadow for break state: #00251a rgba(0,37,26,0.4) 900 Teal Dark */
   transform-origin: 50% 48%;
   transform: scale(0.75);  
   z-index: 500;
 }
-
 .circle__inner h3 {
   font-size: 5.5rem;
   color: #ffffff;
@@ -174,7 +173,8 @@ h3 {
 .circle__message {
   font-size: 5rem;
   color:white;
-  padding: 2rem 0 0 0;
+  padding: 1rem 0 0 0;
+  height: 5rem;
 }
 i.fa.fa-play {
   font-size: 8rem;
@@ -187,7 +187,7 @@ i.fa.fa-undo {
 /* Custom, iPhone Retina */
 @media only screen and (min-width : 20rem) {  /* 320 / 16 = 20rem */
   html {
-    font-size: 62.5%;
+    font-size: 67.5%;    
   }
 }
 
@@ -198,9 +198,9 @@ i.fa.fa-undo {
 
 /* Small Devices, Tablets */
 @media only screen and (min-width : 48rem) {  /* 768 / 16 =  48rem */
- /* html {
-    font-size: 50%;
- }  */
+  html {
+    font-size: 46.5%;
+ }  
  .controls > * {    
     padding: 1rem;
   }
@@ -220,8 +220,6 @@ i.fa.fa-undo {
 
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 75rem) { /* 1200 / 16 = 75rem */
-  /* html {
-    font-size: 40%;
-  }   */
+ 
 }
 

@@ -144,7 +144,7 @@ function run(isSession, state, minute, second) {
         if (isSession) {  
             display = document.getElementById("workTime");  
             message.textContent = "In session";
-            htm[0].style.background = "#ec407a";  //Pink 400
+            htm[0].style.background = "#d81b60";  //Pink 600
             inner.style.background = "#F44336"; //  Red 500
             inner.style.boxShadow = "0 28px 70px rgba(86,0,39,0.4), 0 14px 70px rgba(0,0,0,0.1)";
             outer.style.background = "#fce4ec";  // Pink 50     
@@ -228,8 +228,8 @@ function fillCircle(isSession, minute, second) {
     length = display.textContent; 
    
     [].forEach.call(document.getElementsByClassName("whole"), (function(element) {
-        isSession ? element.style.background = "#FF77A9": element.style.background = "#62EFFF";
-    }));
+        isSession ? element.style.background = "#FF77A9": element.style.background = "#64d8cb";
+    })); /*pink 400 light / teal 400 light */
    
     if (isSession) { numDeg =  sessionDeg - (numSec * 0.1); }
     else { 
