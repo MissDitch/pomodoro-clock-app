@@ -7,32 +7,37 @@ html {
   box-sizing: inherit;
 }
 body {
-  margin:0;
+  margin: 0;
   text-align: center;
   font-family: 'Inconsolata', monospace;
-}
-h1 {
-  font-size: 9rem;
-  color: rgba(255,255,255,0.5); 
 }
 h3 {
   margin: 0.3rem 0; 
 }
+.appName {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 5%;
+  margin: auto;
+  overflow: hidden;
+  font-size: 9rem;
+  line-height: 1;
+  color: rgba(255,255,255,0.2); 
+}
 .clock {
   display: flex;
   flex-direction: column;
-  height: 100vh;
 }
 .controls {
   display: flex;
-  padding: 1em 0;
-  font-size: 2rem;
+  font-size: 1rem;
+  padding: 1rem 0 0 0;
 }
 .controls > * {
-  flex:1;
+  flex: 1;
   display: flex;
-  flex-direction:column;
-  padding: 2rem;  
+  flex-direction: column;
 }
 .buttonContainer {
   display: flex;
@@ -45,15 +50,14 @@ h3 {
   align-items: center;
   cursor: pointer;
   color:white;
-  border: 0.8rem solid rgba(255,255,255,0.5); /*  */
-  width: 11rem;
-  height: 11rem;
-  font-size: 6rem;
+  border: 0.4rem solid rgba(255,255,255,0.5); /*  */
+  width: 5rem;
+  height: 5rem;
+  font-size: 3rem;
   font-weight: 700;
   border-radius: 50%;
-  padding: 1rem;
-  margin: 1rem;
-  font-family: 'Inconsolata', monospace;
+  padding: 0.5rem;
+  margin: 0.5rem;
   text-align: center;
   vertical-align: middle;
 }
@@ -65,28 +69,26 @@ h3 {
 } 
 .controls__display {
   border-radius: 50%;
-  font-size: 7rem; 
+  font-size: 3rem; 
   font-weight: 700; 
   color: #560027; /* pink 900 dark */
   display: flex;
   align-items: center;
-
 }
 .controls h3 {
-  font-size: 3.5rem;
-  /*color: rgba(255,255,255,0.5); */
+  font-size: 2rem;
   color: #560027; /* pink 900 dark */
 }
 .circle { 
-  padding: 4rem 0 4rem 0;
+  padding: 1rem 0 0rem 0;
 }
 .circle__outer {
   position: relative;
   overflow: hidden;
   background: #fce4ec;  /* Pink 50 */ 
   margin: 0 auto; 
-  width: 60rem;
-  height: 60rem;
+  width: 22rem;
+  height: 22rem;
   border-radius: 50%;
 }
 /* inspired by https://css-tricks.com/css-pie-timer/ */
@@ -120,11 +122,9 @@ h3 {
   transform-origin: 100% 50%; 
   transform: rotate(0deg);
 }
-
 .finishLine {
   width: 52%;
-  height: 0.96rem;
-  height: 0.6rem;
+  height: 0.3rem;
   top: 50%;
   left: -2%;
   position: absolute;
@@ -154,40 +154,37 @@ h3 {
   z-index: 500;
 }
 .circle__inner h3 {
-  font-size: 5.5rem;
+  font-size: 2.2rem;
   color: #ffffff;
 }
 .circle__inner .controls__button {
   border: 0rem;
-  width: 21rem;
-  height: 21rem;
+  width: 6rem;
+  height: 6rem;
 }
 .circle__time-left {
   font-weight: 100;
-  font-size: 17rem;
+  font-size: 6rem;
   margin: 0;
   color:white;
   text-shadow:4px 4px 0 rgba(0,0,0,0.05);
 }
 .circle__message {
-  font-size: 5rem;
+  font-size: 2rem;
   color:white;
-  padding: 1rem 0 0 0;
-  height: 5rem;
+  height: 2rem;
 }
 i.fa.fa-play {
-  font-size: 8rem;
-  padding: 15rem;
+  font-size: 3rem;
+  padding: 12rem;
 }
 i.fa.fa-undo {
-  font-size: 5rem;
+  font-size: 2.2rem;
 }
 
 /* Custom, iPhone Retina */
 @media only screen and (min-width : 20rem) {  /* 320 / 16 = 20rem */
-  html {
-    font-size: 62.5%;    
-  }
+ 
 }
 
 /* Extra Small Devices, Phones */
@@ -196,27 +193,53 @@ i.fa.fa-undo {
 }
 
 /* Small Devices, Tablets */
-@media only screen and (min-width : 48rem) {  /* 768 / 16 =  48rem */
-  html {
-    font-size: 55%;
- } 
- .circle {
-   padding: 2rem 0;
- }
- .controls > * {    
-    padding: 1rem;
-  }
-  .clock {
-    margin: 0 auto;
-    max-width: 800px;
-    height: 100%;
-  }  
+@media only screen and (min-width : 48rem) {  /* 768 / 16 =  48rem */  
+  
 }
 
 /* Medium Devices, Desktops */
 @media only screen and (min-width : 62rem) {  /* 992 / 16 = 62rem */
-  html {
-    font-size: 40%;
+  .clock {
+    margin: 0 auto;
+    max-width: 800px;
+  } 
+   .controls > * {    
+    padding: 1rem 0 0 0;
+  }
+  .controls__button {  
+  border: 0.5rem  solid rgba(255,255,255,0.5);;
+  width: 6rem;
+  height: 6rem;
+  }
+  .controls__display {
+    font-size: 4rem; 
+  }
+  .controls h3 {
+  font-size: 2.5rem;
+  }
+  .circle {
+    padding: 1rem 0;
+  }
+  .circle__outer {
+    width: 30rem;
+    height: 30rem;
+  }
+  .circle__time-left {
+    font-size: 8rem;
+  }
+  .circle__inner h3 {
+    font-size: 3rem;
+  }
+  .circle__message {
+    font-size: 2.5rem;
+    height: 2rem;
+  }
+  i.fa.fa-play {
+    font-size: 4.5rem;
+    padding: 12rem;
+  }
+  i.fa.fa-undo {
+    font-size: 3rem;
   }
 }
 

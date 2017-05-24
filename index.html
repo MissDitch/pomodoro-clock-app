@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pomodoro Clock</title>
   <link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -13,6 +14,8 @@
   </noscript>
 
   <div class="clock">
+    
+    <h1 class="appName">Pomodoro Clock</h1>
     
     <div class="controls">
       <div class="controls__work">        
@@ -45,7 +48,6 @@
         <div id="right-half" class="rightHalf whole"></div>
         <div id="mask" class="mask"></div>
 
-
         <div id="circle-inner" class="circle__inner">
           <h3>Time left</h3>
           <h1 id="time" class="circle__time-left"></h1>                    
@@ -58,11 +60,9 @@
       <p id = "message" class="circle__message"></p>
     </div>   <!-- End circle-->    
 
-    <div class="buttonContainer">  
+    <div class="buttonContainer"> 
       <div class="controls__button reset"><i class="fa fa-undo" aria-hidden="true"></i></div>
-    </div>
-
-    <h1>Pomodoro Clock</h1>
+    </div>    
 
   </div>  <!-- End clock--> 
 
