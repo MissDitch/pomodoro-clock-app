@@ -1,6 +1,6 @@
 html {
   box-sizing: border-box;
-  font-size: 67.5%;
+  font-size: 62.5%;
   background: #d81b60; /* Pink 600 */
 }
 *, *:before, *:after {
@@ -77,8 +77,7 @@ h3 {
   /*color: rgba(255,255,255,0.5); */
   color: #560027; /* pink 900 dark */
 }
-.circle {
-  height: 65%;
+.circle { 
   padding: 4rem 0 4rem 0;
 }
 .circle__outer {
@@ -187,7 +186,7 @@ i.fa.fa-undo {
 /* Custom, iPhone Retina */
 @media only screen and (min-width : 20rem) {  /* 320 / 16 = 20rem */
   html {
-    font-size: 67.5%;    
+    font-size: 62.5%;    
   }
 }
 
@@ -199,8 +198,11 @@ i.fa.fa-undo {
 /* Small Devices, Tablets */
 @media only screen and (min-width : 48rem) {  /* 768 / 16 =  48rem */
   html {
-    font-size: 46.5%;
- }  
+    font-size: 55%;
+ } 
+ .circle {
+   padding: 2rem 0;
+ }
  .controls > * {    
     padding: 1rem;
   }
