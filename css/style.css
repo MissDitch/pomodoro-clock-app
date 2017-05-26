@@ -24,6 +24,7 @@ h3 {
   font-size: 9rem;
   line-height: 1;
   color: rgba(255,255,255,0.2); 
+  visibility: hidden;
 }
 .clock {
   display: flex;
@@ -32,7 +33,7 @@ h3 {
 .controls {
   display: flex;
   font-size: 1rem;
-  padding: 1rem 0 0 0;
+  padding: 1rem 0 0.5rem 0;
 }
 .controls > * {
   flex: 1;
@@ -176,7 +177,7 @@ h3 {
 }
 i.fa.fa-play {
   font-size: 3rem;
-  padding: 12rem;
+  padding: 2rem;
 }
 i.fa.fa-undo {
   font-size: 2.2rem;
@@ -194,7 +195,9 @@ i.fa.fa-undo {
 
 /* Small Devices, Tablets */
 @media only screen and (min-width : 48rem) {  /* 768 / 16 =  48rem */  
-  
+  .appName {
+    visibility: visible;
+  }
 }
 
 /* Medium Devices, Desktops */
@@ -203,7 +206,7 @@ i.fa.fa-undo {
     margin: 0 auto;
     max-width: 800px;
   } 
-   .controls > * {    
+  .controls > * {    
     padding: 1rem 0 0 0;
   }
   .controls__button {  
@@ -236,7 +239,6 @@ i.fa.fa-undo {
   }
   i.fa.fa-play {
     font-size: 4.5rem;
-    padding: 12rem;
   }
   i.fa.fa-undo {
     font-size: 3rem;

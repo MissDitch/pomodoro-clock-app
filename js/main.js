@@ -170,7 +170,7 @@ function run(isSession, state, minute, second) {
 
 function countDown (isSession, minute, second) {
     clearInterval(intervalId);   
-    var audio, time = document.getElementById("time");  
+    var audio, time = document.getElementById("time");      
     intervalId = setInterval(function() {
         second < 10 && second >= 0 ? second = "0"+ second : second = second;
         minute < 10 && minute.toString().length === 1 ? minute = "0"+ minute : minute = minute;           
@@ -178,8 +178,8 @@ function countDown (isSession, minute, second) {
         document.title = time.textContent;
         fillCircle(isSession, minute, second);        
         
-        if (minute === '00' && second === '00') {            
-            if (isSession) {
+        if (minute === '00' && second === '00') {      
+            if (isSession) { 
                 makeSound(261.1);  
                 isSession = false; 
                 run(isSession, 0);                  
@@ -251,18 +251,31 @@ function fillCircle(isSession, minute, second) {
 
 function makeSound(frequency) {  
     if (audioCtx) { audioCtx.close(); }
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    var oscillator = audioCtx.createOscillator();
-    var gainNode = audioCtx.createGain();
-    oscillator.type = "triangle";
-    oscillator.frequency.value = frequency;
-    oscillator.connect(gainNode);
-    gainNode.connect(audioCtx.destination);
+    audioCtx = audioContextCheck();
+    if (audioCtx) {
+        var oscillator = audioCtx.createOscillator();
+        var gainNode = audioCtx.createGain();
+        oscillator.type = "triangle";
+        oscillator.frequency.value = frequency;
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
 
-    oscillator.start();
-    var x = setTimeout(function() {
-        gainNode.gain.exponentialRampToValueAtTime (0.00001, audioCtx.currentTime + 5);
-    }, 2000);  
+        oscillator.start();
+        var x = setTimeout(function() {
+            gainNode.disconnect(audioCtx.destination);
+        }, 3000);
+
+    } else return;  
+
+    function audioContextCheck() {
+        if (typeof AudioContext !== "undefined") {
+            return new AudioContext();
+        } else if (typeof webkitAudioContext !== "undefined") {
+            return new webkitAudioContext();
+        } else { 
+            alert("Time's up!"); // IE does not support AudioContext
+        }
+    }
 }
 
 init();
